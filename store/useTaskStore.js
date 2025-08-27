@@ -14,12 +14,15 @@ currentTaskIndex: 0, //index for Step 2 navigation
 ACTIONS
 -----------------*/
 
+//STEP 1: MIND SWEEP
+
 //addTask accepts text as an arguement
 addTask: (text) => {
     const newTask = { 
         id: Date.now(),  
         text, //shorthand because the key and varaible name are the same
-        iuvalue: []
+        important: false,
+        urgent: false 
     };
 
     set({
@@ -43,6 +46,30 @@ editTask: (id, newText) => {
     });
 },
 
+//delete task
+deleteTask: (id) => 
+    set((state) => ({
+        //create an array including items that are not the current id
+        tasks: state.tasks.filter((t) => t.id !== id),
+    })),
+
+// STEP 2: REVIEW & CATEGORIZE
+
+toggleImportant: (id) =>
+    set((state) => ({
+        tasks: state.tasks.map((t) => 
+            //if the task id matches, copy all of the task's properties, then invert the current setting for important, if id does not match return task as is
+            t.id === id ? {...t, important: !t.important } : t
+        ),
+    })),
+
+toggleUrgent: (id) => 
+    set((state) => ({
+        //as above but using urgent
+        tasks: state.tasks.map((t) =>
+        t.id === id ? {...t, urgent: !t.urgent } : t
+        ),
+    })),
 })
 
 );
