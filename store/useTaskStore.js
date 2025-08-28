@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-const useTaskStore = create((set, get) => ({
+export const useTaskStore = create((set, get) => ({
 /*-----------------
 STATE
 -----------------*/
@@ -70,6 +70,31 @@ toggleUrgent: (id) =>
         t.id === id ? {...t, urgent: !t.urgent } : t
         ),
     })),
+
+//TASK NAVIGATION
+
+prevTask: () => {
+    const idx = get().currentTaskIndex;
+    //if not on first task go to previous task
+    if(idx > 0) set({ currentTaskIndex: idx-1})
+},
+
+nextTask: () => {
+    const idx = get().currentTaskIndex;
+    // if not at final task
+    if (idx < get().tasks.length - 1) set ({currentTaskIndex: idx + 1 });
+},
+
+//STEP NAVIGATION
+goToStep: (stepNumber) => set({ currentStep: stepNumber}),
+
+//Reset Store
+reset: () => set({
+    tasks: [],
+    currentStep:1,
+    currentTaskIndex: 0
+})
+
 })
 
 );
