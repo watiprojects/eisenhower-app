@@ -1,7 +1,9 @@
 import { Navigate, useNavigate } from "react-router-dom";
+import { useTaskStore } from "../../store/useTaskStore";
 
 function StepThree() {
-    const navigate = useNavigate(); // hook to the navigate function
+    const navigate = useNavigate(); 
+    const {tasks, addTask, editTask} = useTaskStore();
 
         return (
         <div className="flex-col items-center">

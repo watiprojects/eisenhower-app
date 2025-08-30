@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import { useTaskStore } from '../../store/useTaskStore'
 import '../App.css'
-import { Link } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function StepOne() {
     const [newTaskText, setNewTaskText] = useState("");
+    const {tasks, addTask, editTask} = useTaskStore(); //hook to tasks, and add and edit task functions
 
-    const {tasks, addTask, editTask} = useTaskStore();
+    const navigate = useNavigate(); // hook to the navigate function
 
     return (
         <div className="flex-col items-center">
@@ -45,10 +46,9 @@ function StepOne() {
             </ul>
             </div>
         </div>
-        <Link>
-            <button type="submit" className="px-4 py-2 bg-gray-600 text-white rounded-lg" onClick={() => {console.log(tasks)
+        <button type="button" className="px-4 py-2 bg-gray-600 text-white rounded-lg" 
+            onClick={() => {navigate("/step2")
             }}>Submit</button>
-        </Link>
     </div>
     )
     }
