@@ -1,55 +1,21 @@
-import { useState } from 'react'
-import { useTaskStore } from '../store/useTaskStore'
-import './App.css'
+import { Routes, Route, Link } from "react-router-dom"; import StepOne from "./pages/StepOne"; import StepTwo from "./pages/StepTwo"; import StepThree from "./pages/StepThree";
 
 
 function App() {
-  
-  const [newTaskText, setNewTaskText] = useState("");
-
-  const {tasks, addTask, editTask} = useTaskStore();
-
   return (
-    <div className="flex-col items-center">
-      <h1>The EISENHOWer</h1>
-      <h2>Step 1: Mind Sweep</h2>
-      <p>What tasks are swirling around in your mind? List them all!</p>
-      <div className="flex-col text-left">
-        <div className="mind-sweep-div bg-gray-200 h-[40vh] p-2 m-4 rounded-lg overflow-auto">
-          <ul className="list-disc list-inside">
-            {tasks.map(task => (
-              <li key={task.id}>
-                <input
-                  type="text"
-                  value={task.text}
-                  onChange = {(e) => editTask(task.id, e.target.value)}
-                />
-              </li>
-            ))}
-            <li>
-              <input
-                type ="text"
-                placeholder = "Insert item here"
-                value={newTaskText} //local state for the new input
-                onChange = {(e) => setNewTaskText(e.target.value)}// update with each keystroke
-                onKeyDown={(e) => {
-                  //Check for pressing enter, but ignores blank tasks
-                  if (e.key === "Enter" && newTaskText.trim() !== ""){
-                    addTask(newTaskText); //add task to the main array
-                    setNewTaskText(""); //clear placeholder text for next input
-
-                  } 
-                }}
-
-              />
-            </li>
-          </ul>
-        </div>
-      </div>
-      <button type="submit" className="px-4 py-2 bg-gray-600 text-white rounded-lg" onClick={() => {console.log(tasks)
-      }}>Submit</button>
+    <div>
+      <Routes>
+        {/* Home route */}
+        <Route path ="/" element ={<StepOne />} />
+        
+        {/* Other steps */}
+        <Route path ="/step1" element={<StepOne />} />
+        <Route path ="/step2" element={<StepTwo />} />
+        <Route path ="/step3" element={<StepThree />} />
+      </Routes>
     </div>
   )
+  
 }
 
 export default App
