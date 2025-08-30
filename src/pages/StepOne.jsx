@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { useTaskStore } from '../store/useTaskStore'
-import './App.css'
+import { useTaskStore } from '../../store/useTaskStore'
+import '../App.css'
 import { Link } from "react-router-dom";
 
 function StepOne() {
