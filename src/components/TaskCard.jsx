@@ -16,18 +16,18 @@ function TaskCard ({task}){
             const handleKeyDown = (e) => {
                 //go to next task if arrow right
                 if (e.key === "i") {
-                    toggleImportant();
+                    toggleImportant(currentTask.id);
                 }
                 //go to previous task if arrow right
                 else if (e.key === "u") {
-                    toggleUrgent();
+                    toggleUrgent(currentTask.id);
                 }
             }
             window.addEventListener("keydown", handleKeyDown);
             return () => {
             window.removeEventListener("keydown", handleKeyDown);
             };
-        }, [toggleImportant, toggleUrgent]);
+        }, [toggleImportant, toggleUrgent, currentTask.id]);
 
 
     return (   
@@ -39,10 +39,21 @@ function TaskCard ({task}){
                 Task {currentTaskIndex + 1} of {tasks.length} 
             </p>
             {/* display important and urgent labels*/}
-            {/* if important is active display in box
-                if it is true that the current task has important then display the words important at the bottom
+            {/* keep placeholders but hide the visibilty
             */}
-            <p></p>
+            <div className ="mt-2 flex justify-between">
+                {/* important label*/}
+                <span className = {`px-2 py-1 rounded ${currentTask.important ? "font-bold" : "invisible" }`}
+                > 
+                {currentTask.important ? "Important" : ""}
+                </span>
+
+                {/* urgent label*/}
+                <span className = {`px-2 py-1 rounded ${currentTask.urgent ? "font-bold" : "invisible" }`}
+                > 
+                {currentTask.urgent ? "Urgent" : ""}
+                </span>
+            </div>
         </div>
         
     );
