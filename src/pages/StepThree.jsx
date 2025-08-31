@@ -11,7 +11,7 @@ function StepThree() {
             <h2 className="font-bold mb-4">Here is your EISENHOWer matrix!</h2>
             {/*Eisenhower Matrix div*/}
             <div>
-                <div className="grid grid-cols-2 gap-4 mb-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <div className="bg-gray-300 p-4 rounded">
                         <p className="font-bold">Quadrant 1: Important and Urgent</p>
                         <ul className="list-disc list-inside ">
@@ -32,7 +32,7 @@ function StepThree() {
                         </ul>
                     </div>
                 </div>
-                <div className="grid grid-cols-2 gap-4 mb-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <div className="bg-gray-300 p-4 rounded">
                         <p className="font-bold">Quadrant 3: Urgent, Not Important </p>
                         <ul className="list-disc list-inside">

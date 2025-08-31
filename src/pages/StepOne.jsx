@@ -12,8 +12,8 @@ function StepOne() {
     return (
         <div className="flex-col items-center">
         <h1 className="font-bold text-2xl">The EISENHOWer</h1>
-        <h2>Step 1: Mind Sweep</h2>
-        <p className="mb-6">What tasks are swirling around in your mind? List them all!</p>
+        <h2 className="font-semibold text-xl mt-4 mb-2">Step 1: Mind Sweep</h2>
+        <p className="mb-6 text-gray-600 italic">What tasks are swirling around in your mind? List them all!</p>
         <div className="flex-col text-left">
             <div className="mind-sweep-div bg-gray-200 h-[40vh] p-2 m-4 rounded-lg overflow-auto">
             <ul className="list-disc list-inside">
@@ -51,7 +51,7 @@ function StepOne() {
         </div>
         <button type="button" className="px-4 py-2 bg-gray-500 text-white rounded-lg" 
             onClick={() => {navigate("/step2")
-            }}>Submit</button>
+            }}>Continue to Step 2</button>
     </div>
     )
     }

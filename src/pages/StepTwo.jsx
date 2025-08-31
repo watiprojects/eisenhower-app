@@ -27,11 +27,21 @@ function StepTwo() {
         };
     }, [nextTask, prevTask]);
 
+    // Preventing error if no tasks
+    if (!currentTask) {
+        return (
+        <div>
+            <h1 className="font-bold text-2xl">The EISENHOWer</h1>
+            <p className="text-gray-500 italic">No tasks available.</p>
+        </div>
+        )
+    }
+
     return (
     <div className="flex flex-col items-center">
         <h1 className="font-bold text-2xl">The EISENHOWer</h1>
-        <h2>Step 2: Review and categorize</h2>
-        <p>Is this important and/or urgent?</p>
+        <h2 className="font-semibold text-xl mt-4 mb-2">Step 2: Review and categorize</h2>
+        <p className="mb-2 text-gray-600 italic">Is this important and/or urgent?</p>
         <div className="flex w-max-[90%] items-center">
             <button 
             className="flex-none text-gray-600"
@@ -45,6 +55,7 @@ function StepTwo() {
             onClick={nextTask}>Next
             </button>
         </div>
+        <p className="mb-6 text-gray-600 italic text-sm">Tip: Click the buttons below to specify whether it's urgent or important</p>
         <div className="flex gap-4 mb-8">
             {/* buttons to toggle importance and urgency - light grey if not selected, dark grey if selected */}
             <button
