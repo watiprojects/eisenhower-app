@@ -6,7 +6,8 @@ import { useEffect } from 'react';
 function StepTwo() {
     
     const navigate = useNavigate();
-    const {prevTask, nextTask} = useTaskStore(); 
+    const {tasks, prevTask, nextTask, currentTaskIndex,toggleImportant, toggleUrgent} = useTaskStore(); 
+    const currentTask = tasks[currentTaskIndex];
 
     //handle keyboard navigation
     useEffect(() => {
@@ -28,13 +29,37 @@ function StepTwo() {
 
     return (
     <div className="flex flex-col items-center">
-        <h1>The EISENHOWer</h1>
+        <h1 className="font-bold text-2xl">The EISENHOWer</h1>
         <h2>Step 2: Review and categorize</h2>
         <p>Is this important and/or urgent?</p>
-        <TaskCard />              
-        <button type="button" className="px-4 py-2 bg-gray-600 text-white rounded-lg" 
+        <div className="flex w-max-[90%] items-center">
+            <button 
+            className="flex-none text-gray-600"
+            onClick={prevTask}>Previous
+            </button>
+            <div className="flex-grow">
+                <TaskCard />
+            </div> 
+            <button 
+            className="flex-none text-gray-600"
+            onClick={nextTask}>Next
+            </button>
+        </div>
+        <div className="flex gap-4 mb-8">
+            {/* buttons to toggle importance and urgency - light grey if not selected, dark grey if selected */}
+            <button
+            className={`flex-none px-4 py-2 rounded-lg ${currentTask.important ? "bg-gray-700 text-white" : "bg-gray-500 text-white" }`}
+            onClick={() => {toggleImportant(currentTask.id)}}>Important
+            </button>
+
+            <button 
+            className={`flex-none px-4 py-2 rounded-lg ${currentTask.urgent ? "bg-gray-700 text-white" : "bg-gray-500 text-white" }`}
+            onClick={() => {toggleUrgent(currentTask.id)}}>Urgent
+            </button>
+        </div>             
+        <button type="button" className="mt-4 px-4 py-2 bg-gray-500 text-white rounded-lg" 
         onClick={() => {navigate("/step3")
-        }}>Submit</button>
+        }}>Continue to Step 3</button>
     </div>
     )
     }

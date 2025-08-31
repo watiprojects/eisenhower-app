@@ -8,7 +8,7 @@ function TaskCard ({task}){
     
     //statement if no tasks
     if (tasks.length === 0) {
-        return <p> No tasks yet </p>;
+        return <p className="p-8"> No tasks yet </p>;
     }
 
     //handle keyboard navigation
@@ -33,7 +33,7 @@ function TaskCard ({task}){
     return (   
         <div className="m-6 p-4 w-sm border rounded shadow">
             {/* display current task */}
-            <p>{currentTask.text}</p>
+            <p className="w-[100%] overflow-scroll">{currentTask.text}</p>
             {/* display number of tasks */}
             <p className="text-sm text-gray-500">
                 Task {currentTaskIndex + 1} of {tasks.length} 

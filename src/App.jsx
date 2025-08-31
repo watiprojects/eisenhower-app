@@ -5,9 +5,9 @@ function App() {
   return (
     <div>
       <nav className="flex gap-4 mb-6 justify-center text-gray-600">
-        <Link to ="/step1">Step 1</Link>
-        <Link to ="/step2">Step 2</Link>
-        <Link to ="/step3">Step 3</Link>
+        <Link to ="/step1">Step 1 - Mind Sweep</Link>
+        <Link to ="/step2">Step 2 - Categorize</Link>
+        <Link to ="/step3">Step 3 - View Results</Link>
       </nav>
       <Routes>
         {/* Home route */}

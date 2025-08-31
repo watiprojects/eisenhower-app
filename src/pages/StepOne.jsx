@@ -11,15 +11,17 @@ function StepOne() {
 
     return (
         <div className="flex-col items-center">
-        <h1>The EISENHOWer</h1>
+        <h1 className="font-bold text-2xl">The EISENHOWer</h1>
         <h2>Step 1: Mind Sweep</h2>
-        <p>What tasks are swirling around in your mind? List them all!</p>
+        <p className="mb-6">What tasks are swirling around in your mind? List them all!</p>
         <div className="flex-col text-left">
             <div className="mind-sweep-div bg-gray-200 h-[40vh] p-2 m-4 rounded-lg overflow-auto">
             <ul className="list-disc list-inside">
                 {tasks.map(task => (
-                <li key={task.id}>
+                <li 
+                    key={task.id}>
                     <input
+                    className="w-[80%]"
                     type="text"
                     value={task.text}
                     onChange = {(e) => editTask(task.id, e.target.value)}
@@ -28,6 +30,7 @@ function StepOne() {
                 ))}
                 <li>
                 <input
+                    className="w-[80%]" 
                     type ="text"
                     placeholder = "Insert item here"
                     value={newTaskText} //local state for the new input
@@ -46,7 +49,7 @@ function StepOne() {
             </ul>
             </div>
         </div>
-        <button type="button" className="px-4 py-2 bg-gray-600 text-white rounded-lg" 
+        <button type="button" className="px-4 py-2 bg-gray-500 text-white rounded-lg" 
             onClick={() => {navigate("/step2")
             }}>Submit</button>
     </div>

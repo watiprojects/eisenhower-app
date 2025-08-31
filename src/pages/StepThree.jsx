@@ -7,7 +7,8 @@ function StepThree() {
 
         return (
         <div className="flex flex-col items-center">
-            <h1>Here is your Eisenhower Matrix!</h1>
+            <h1 className="font-bold text-2xl mb-4">The EISENHOWer</h1>
+            <h2 className="font-bold mb-4">Here is your EISENHOWer matrix!</h2>
             {/*Eisenhower Matrix div*/}
             <div>
                 <div className="grid grid-cols-2 gap-4 mb-4">
@@ -54,7 +55,7 @@ function StepThree() {
                 </div>
             </div>
 
-            <button type="button" className="px-4 py-2 bg-gray-600 text-white rounded-lg" 
+            <button type="button" className="px-4 py-2 bg-gray-500 text-white rounded-lg" 
             onClick={() => {navigate("/step2")
             }}>Back</button>
         </div>
