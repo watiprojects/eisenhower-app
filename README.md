@@ -6,7 +6,7 @@ A simple task prioritization tool which allows users to quickly capture their ta
 
 ## Features
 
-### Step 1: Brain Dump
+### Step 1: Mind Sweep
 - Enter tasks in a scrollable list.
 - Each task is **editable inline**.
 - A placeholder input at the bottom allows adding new tasks by pressing **Enter**.
